@@ -1,0 +1,25 @@
+{
+  "name": "toj-tu-yeetel",
+  "version": "0.0.1",
+  "description": "sistema de cosechas",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "socket.io": "^2.3.0",
+    "mongoose": "^5.9.1"
+  },
+  "engines": {
+    "node": "10.x"
+  },
+  "repository": {
+    "url": "https://github.com/amcamcamc/Toj-Tu-Yeetel"
+  },
+  "license": "none",
+  "keywords": [
+    "node",
+    "express"
+  ]
+}
