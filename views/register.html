@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Toj Tu Yeetel - Register</title>
+		<style>
+		.login-form {
+			width: 300px;
+			margin: 0 auto;
+			font-family: Tahoma, Geneva, sans-serif;
+		}
+		.login-form h1 {
+			text-align: center;
+			color: #009b22;
+			font-size: 24px;
+			padding: 20px 0 20px 0;
+		}
+    .login-form h2 {
+			text-align: center;
+			color: #4d4d4d;
+			font-size: 18px;
+			padding: 20px 0 20px 0;
+		}
+		.login-form input[type="password"],
+		.login-form input[type="text"] {
+			width: 100%;
+			padding: 15px;
+			border: 1px solid #dddddd;
+			margin-bottom: 15px;
+			box-sizing:border-box;
+		}
+		.login-form input[type="submit"] {
+			width: 100%;
+			padding: 15px;
+			background-color: #009b22;
+			border: 0;
+			box-sizing: border-box;
+			cursor: pointer;
+			font-weight: bold;
+			color: #ffffff;
+		}
+    .login-form a {
+      width: 100%;
+			padding: 15px;
+			border: 0;
+			cursor: pointer;
+			font-weight: bold;
+			color: #009b22;
+    }
+		</style>
+	</head>
+	<body>
+		<div class="login-form">
+      <h1>Toj Tu Yeetel</h1>
+			<h2>Crear una cuenta</h2>
+      <script>
+        var error = window.location.search.substr(1)
+        error = error.split("_");
+        error = error.join(" ");
+        document.write("<h3>"+error+"</h3>");
+      </script>
+			<form action="authregister" method="POST">
+        <input type="text" name="name" placeholder="Nombre" required>
+        <input type="text" name="lastname" placeholder="Apellido" required>
+        <input type="text" name="phone" placeholder="Telefono" required>
+        <input type="text" name="email" placeholder="Correo" required>
+				<input type="text" name="username" placeholder="Nombre de Usuario" required>
+				<input type="password" name="password" placeholder="Contraseña" required>
+        <input type="submit" value="Registrarse">
+			</form>
+      <a href="/login">¿Ya tiene cuenta? Iniciar Sesion</a>
+		</div>
+	</body>
+  <link rel="stylesheet" href="/style.css">
+</html>

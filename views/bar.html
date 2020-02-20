@@ -1,0 +1,29 @@
+<div id="mainmenu">
+ <ul>
+  <li class="menubutton active" data-target="inicio"><a>Inicio</a></li>
+  <li class="menubutton" data-target="cosechas"><a>Cosechas</a></li>
+  <li class="menubutton" data-target="reportes"><a>Reportes</a></li>
+  <li class="menubutton" data-target="mapa"><a>Mapa</a></li>
+ </ul>
+</div>
+
+<script>
+  $(document).ready(function()
+   {
+    var trigger = $(".menubutton");
+    var container = $("#content");
+    
+    trigger.on("click", function(){
+      var oldActive = document.getElementsByClassName("active");
+      $(oldActive[0]).removeClass("active");
+      
+      var $this = $(this), target = $this.data("target");
+      container.load("../views/"+target+".html");
+      $(this).addClass("active");
+      
+      if (target == "cosechas") {requestCrops();}
+      
+      return false;
+    })
+   })
+</script>

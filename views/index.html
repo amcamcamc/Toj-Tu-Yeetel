@@ -1,5 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
+<html>
   <head>
     <title>Toj Tu Yeetel</title>
     <meta name="description" content="sistema de cosechas">
@@ -7,23 +6,53 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
 
-    <!-- import the webpage's stylesheet -->
     <link rel="stylesheet" href="/style.css">
     
-    <!-- import the webpage's client-side javascript file -->
     <script src="/client.js" defer></script>
   </head>
+  
   <body>
     <header>
       <h1>
         Toj Tu Yeetel
       </h1>
+      
+      <form action="/logout" method="POST">
+       <button action="/logout" method="POST" class="xbutton" type="submit">Cerrar sesion</button> 
+      </form>
+      
+      <div id="bar">
+       <script>
+        $(function(){
+          $("#bar").load("../views/bar.html");
+        })
+       </script>
+      </div>
+      
     </header>
 
     <main>
-      Hola
+      
+      <script>
+       var error = window.location.search.substr(1)
+       error = error.split("_");
+       error = error.join(" ");
+       document.write("<h3>"+error+"</h3>");
+      </script>
+      
+      <div id="content">
+       <script>
+        $(function(){
+          $("#content").load("../views/inicio.html");
+        })
+       </script>
+      </div>
     </main>
 
   </body>
+  
 </html>
