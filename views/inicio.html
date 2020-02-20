@@ -1,0 +1,42 @@
+<form action="/cultivar" method="POST">
+ <h1>Añadir Cultivo</h1>
+  
+ <input type="text" name="name" placeholder="Nombre del cultivo" required>
+  
+  <label for="typesC">Tipo de cosecha:</label>
+  <select id="typesC" name="type">
+    <option value="Chile Habanero">Chile Habanero</option>
+    <option value="Calabaza">Calabaza</option>
+    <option value="Pepino">Pepino</option>
+    <option value="Chile Serrano">Chile Serrano</option>
+  </select>
+  
+ <label for="seedDate">Sembrado:</label> 
+ <input id="seedDate" type="date" name="seedDate" required>
+  
+ <label for="harvestDate">Inicio de cosecha:</label> 
+ <input id="harvestDate" type="date" name="harvestDate" required>
+  
+ <input type="text" name="location" placeholder="Ubicacion" required>
+  
+ <button class="xbutton" type="submit">Cosechar</button>
+</form>
+
+
+<form action="/reportar" method="POST">
+ <h1>Reportar Plaga</h1>
+  
+ <input type="text" name="title" placeholder="Titulo del reporte" required>
+
+ <label for="typesR">Plaga encontrada:</label>
+  <select id="typesR" name="type">
+    <option value="Dragon Amarillo">Dragon Amarillo</option>
+    <option value="Acaro Blanco">Acaro Blanco</option>
+    <option value="Picudo de Chile">Picudo de Chile</option>
+    <option value="Minador de la Hoja">Minador de la Hoja</option>
+  </select>
+  
+  <textarea name="description" placeholder="Describe la situacion" required></textarea>
+  
+ <button class="xbutton" type="submit">Reportar</button>
+</form>
