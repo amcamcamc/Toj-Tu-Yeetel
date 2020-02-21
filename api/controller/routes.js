@@ -1,5 +1,5 @@
 module.exports = (app, crud) =>
-{  
+{    
  app.get("/", function(req, res) {
   if (req.session.loggedin)
   {
@@ -74,8 +74,29 @@ module.exports = (app, crud) =>
    var harvestDate = new Date(req.body.harvestDate);
    var location = req.body.location;
     
-   crud.CropCRUD.create(name, type, location, seedDate, harvestDate, req.session.user).then(data =>{
-    if (data == true) {res.redirect("/?Cultivo_registrado.")} else {res.redirect("/?Error._Intente_de_nuevo.")}
+   if (harvestDate < seedDate == true) {res.redirect("/?La_fecha_de_cosecha_no_puede_ser_antes_que_la_de_sembrado.")}
+   else
+   {
+    crud.CropCRUD.create(name, type, location, seedDate, harvestDate, req.session.user).then(data =>{
+    if (data == true) {res.redirect("/?Cultivo_registrado.")} else {res.redirect("/?Error._Intente_de_nuevo.")}})
+   }
+  }
+  else
+  {
+   res.redirect("/login?ERROR._NO_HA_INICIADO_SESION");
+  }
+ });
+  
+ app.post("/reportar", function(req, res) 
+ {        
+  if (req.session.loggedin)
+  {
+   var title = req.body.title;
+   var description = req.body.description;
+   var type = req.body.type;
+    
+   crud.ReportCRUD.create(title, description, type, req.session.user).then(data =>{
+    if (data == true) {res.redirect("/?Reporte_registrado.")} else {res.redirect("/?Error._Intente_de_nuevo.")}
    }
   )
   }

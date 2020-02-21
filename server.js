@@ -41,7 +41,7 @@ app.use(esession);
 io.use(sharedsession(esession, {autoSave: true,}));
 
 require("./api/controller/serverSocket")(io, CRUDs);
-require("./api/routes/routes")(app, CRUDs);
+require("./api/controller/routes")(app, CRUDs);
 
 mongoose.connect(process.env.DATABASE_URL, {useNewUrlParser: true, useUnifiedTopology: true})
 .then(()=>

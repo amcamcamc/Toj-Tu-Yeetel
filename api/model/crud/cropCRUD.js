@@ -29,12 +29,12 @@ function destroy(id){
 }
 
 async function getByName(name) {
- let crop = await Cultivo.findOne({ name: name }).lean().exec();
+ let crop = await Cultivo.findOne({ name: name }).populate("creator").lean().exec();
  return crop;
 }
 
 async function getByCreator(id) {
- let crop = await Cultivo.find({ creator: id }).lean().exec();
+ let crop = await Cultivo.find({ creator: id }).populate("creator").lean().exec();
  return crop;
 }
 

@@ -9,6 +9,11 @@ function deleteCrop(id)
  socket.emit("DeleteCrop", id);
 }
 
+function deleteReport(id, creator)
+{
+ socket.emit("DeleteReport", id, creator, socket.id);
+}
+
 function loadCrop(entry)
 {
  var row = document.createElement("tr");
@@ -70,11 +75,60 @@ function loadCrop(entry)
  table.appendChild(row);
 }
 
+function loadReport(entry)
+{
+ var row = document.createElement("tr");
+  
+   var title_cell = document.createElement("td");
+   var title = document.createTextNode(entry.title);
+   title_cell.appendChild(title);
+  
+   var type_cell = document.createElement("td");
+   var type = document.createTextNode(entry.type);
+   type_cell.appendChild(type);
+  
+   var description_cell = document.createElement("td");
+   var description = document.createTextNode(entry.description);
+   description_cell.appendChild(description);
+  
+   var creator_cell = document.createElement("td");
+   var creator = document.createTextNode(entry.creator.name + " "+entry.creator.lastname);
+   creator_cell.appendChild(creator);
+  
+   var sDate_cell = document.createElement("td");
+   var sDate = document.createTextNode(formatDate(new Date(entry.date)));
+   sDate_cell.appendChild(sDate);
+  
+   var button_cell = document.createElement("td");
+   var deleteEntry = document.createElement("button");
+   deleteEntry.classList.add("button_delete");
+   deleteEntry.textContent = "ELIMINAR"
+   deleteEntry.setAttribute("cropId", entry._id);
+   deleteEntry.setAttribute("creator", entry.creator._id);
+   deleteEntry.onclick = function () { deleteReport(entry._id, entry.creator._id) };
+   button_cell.appendChild(deleteEntry);
+  
+ row.appendChild(title_cell);
+ row.appendChild(type_cell);
+ row.appendChild(description_cell);
+ row.appendChild(sDate_cell);
+ row.appendChild(creator_cell);
+ row.appendChild(button_cell);
+  
+ var table = document.getElementById("tablaReportes");
+ table.appendChild(row);
+}
+
 var socket = io();
 
 function requestCrops()
 {
  socket.emit("RequestCrops");
+}
+
+function requestReports()
+{
+ socket.emit("RequestReports");
 }
 
 socket.on
@@ -86,6 +140,21 @@ socket.on
   (function(entry)
    {
     loadCrop(entry);
+   }
+  );
+ }
+)
+
+socket.on
+("LoadReports",
+ function(data)
+ {
+  if (!data) return; 
+  data.reverse();
+  data.forEach
+  (function(entry)
+   {
+    loadReport(entry);
    }
   );
  }
