@@ -2,14 +2,13 @@ const Usuario = require("../schemas/User");
 const Cultivo = require("../schemas/Crop");
 const Reporte = require("../schemas/Report");
 
-function create(name, description, type, date, creator) {
+function create(name, description, type, creator) {
  var report = new Reporte
  (
   {
-   name: name,
+   title: name,
    description: description,
    type: type,
-   date: date,
    creator: creator
   }
  )
@@ -21,13 +20,27 @@ function create(name, description, type, date, creator) {
  });
 }
 
+function destroy(id){
+ Reporte.findOne({ _id: id }, function(e, report){
+   report.remove();
+ });
+}
+
+async function getAll()
+{
+ let reports = await Reporte.find().populate("creator").lean().exec();
+ return reports;
+}
+
 async function getByCreator(id) {
- let report = await report.findById({ creator: id }).lean().exec();
+ let report = await report.findById({ creator: id }).populate("creator").lean().exec();
  return report;
 }
 
 module.exports =
 {
  create,
+ destroy,
+ getAll,
  getByCreator
 }

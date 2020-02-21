@@ -1,1 +1,54 @@
-report
+<style>
+table.redTable {
+  font-family: Georgia, serif;
+  border: 6px solid #ff1111;
+  background-color: #770000;
+  width: 100%;
+  text-align: left;
+  color: #F0F0F0;
+}
+table.redTable td, table.greenTable th {
+  border: 1px solid #ffaaaa;
+  padding: 5px 5px;
+}
+table.redTable tbody td {
+  font-size: 20px;
+}
+table.redTable thead {
+  background: #ff1111;
+  background: -moz-linear-gradient(top, #ffaaaa 0%, #dd0000 66%, #ff0000 100%);
+  background: -webkit-linear-gradient(top, #ffaaaa 0%, #dd1111 66%, #ff0000 100%);
+  background: linear-gradient(to bottom, #ffaaaa 0%, #aa0000 66%, #ff0000 100%);
+}
+table.redTable thead th {
+  font-size: 19px;
+  font-weight: bold;
+  color: #F0F0F0;
+  text-align: center;
+  border-left: 2px solid #ffaaaa;
+}
+table.redTable thead th:first-child {
+  border-left: none;
+}
+  
+</style>
+
+<table class="redTable">
+
+<thead>
+<tr>
+<th>Titulo</th>
+<th>Plaga Encontrada</th>
+<th>Descripcion</th>
+<th>Fecha</th>
+<th>Quien Reporto</th>
+<th>-</th>
+</tr>
+</thead>
+  
+<tbody id="tablaReportes">
+ <tr>
+ </tr>
+</tbody>
+  
+</table>
