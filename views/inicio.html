@@ -18,7 +18,11 @@
  <label for="harvestDate">Inicio de cosecha:</label> 
  <input id="harvestDate" type="date" name="harvestDate" required>
   
- <input type="text" name="location" placeholder="Ubicacion" required>
+ <input id="mouse-position" type="text" name="location" placeholder="Ubicacion (Haga click en el mapa)" required>
+  
+ <div id="map2" class="map2">
+  <script src="/mapselect.js" defer></script>
+ </div>  
   
  <button class="xbutton" type="submit">Cosechar</button>
 </form>

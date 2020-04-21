@@ -22,6 +22,14 @@ module.exports = (io, cruds) =>
     })
    })
    
+   socket.on("RequestMapCrops", function()
+   {
+    console.log(socket.id+" has requested to load map crops");
+    cruds.CropCRUD.getByCreator(socket.user._id).then(data =>{
+      socket.emit("LoadMapCrops", data);
+    })
+   })
+   
    socket.on("RequestReports", function()
    {
     console.log(socket.id+" has requested to load reports");
