@@ -131,6 +131,11 @@ function requestReports()
  socket.emit("RequestReports");
 }
 
+function requestMapCrops()
+{
+ socket.emit("RequestMapCrops");
+}
+
 socket.on
 ("LoadCrops",
  function(data)
