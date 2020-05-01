@@ -1,3 +1,5 @@
+//Contiene opciones predeterminadas del mapa y funcion para cargar cosechas en el mapa.
+
 var map = new ol.Map({
   target: "map",
   layers: [
