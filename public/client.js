@@ -1,3 +1,5 @@
+//Contiene funciones para obtener fecha,eliminar cosecha y reporte de plaga,cargar cosechas y reportes de plaga.
+
 function formatDate(date) 
 {
  var monthNames = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
